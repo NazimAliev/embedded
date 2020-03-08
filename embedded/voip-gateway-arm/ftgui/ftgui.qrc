@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/radio">
+        <file>res/icons/radio-wireless-signal-icone-5919-48.png</file>
+        <file>res/icons/radio-wireless-signal-icone-5919-32.png</file>
+        <file>res/icons/No_active_Rx-64.png</file>
+        <file>res/icons/No_active_RxTx-64.png</file>
+        <file>res/icons/Rx_active_Rx-64.png</file>
+        <file>res/icons/Rx_active_RxTx-64.png</file>
+        <file>res/icons/Tx_active_RxTx-64.png</file>
+        <file>res/icons/settings.png</file>
+    </qresource>
+</RCC>
