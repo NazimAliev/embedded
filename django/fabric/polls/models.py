@@ -37,6 +37,7 @@ class AnswerChoice(models.Model):
 	answer_id = models.AutoField(primary_key=True)
 	user_id = models.IntegerField()
 	choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+	answer_choice = models.IntegerField()
 	def __str__(self):
 		return str(self.choice)
 

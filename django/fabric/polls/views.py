@@ -42,7 +42,7 @@ class AnswerTextView(APIView):
 		return Response({"success": "Anser Text  '{}' created successfully".format(answer_saved)})
 
 class AnswerChoiceView(APIView):
-	def get(self, request):
+	def get(self, request, user_id):
 		answer_choice = AnswerChoice.objects.filter(user_id=user_id)
 		serializer = AnswerChoiceSerializer(answer_choice, many=True)
 		return Response({"answer_choice" : serializer.data})

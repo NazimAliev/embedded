@@ -24,5 +24,6 @@ class AnswerTextSerializer(serializers.Serializer):
 class AnswerChoiceSerializer(serializers.Serializer):
 	user_id = serializers.IntegerField()
 	choice_id = serializers.IntegerField()
+	answer_choice = serializers.CharField(max_length=200)
 	def create(self, validated_data):
 		return AnswerChoice.objects.create(**validated_data)
