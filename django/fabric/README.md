@@ -103,3 +103,108 @@ Body:
 
 *ToDo: проверка единственности и множественности ответов*
 *ToDo: сравнивать дату ответов пользователя со сроком действия опроса*
+
+Примеры запросов:
+```
+GET /api/answers/poll_id%3D2/user_id%3D1
+HTTP 200 OK
+Allow: GET, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "answers": [
+        {
+            "question": 2,
+            "question_text": "Ваш любимый фрукт?",
+            "question_type": 0,
+            "choice_name": []
+        },
+        {
+            "question": 3,
+            "question_text": "Найдите красный фрукт",
+            "question_type": 1,
+            "choice_name": [
+                "Яблоко: 4",
+                "Слива: 5",
+                "Апельсин: 6"
+            ]
+        },
+        {
+            "choice": 4
+        },
+        [],
+        {
+            "choice": 5
+        },
+        [],
+        {
+            "choice": 6
+        },
+        [],
+        {
+            "question": 4,
+            "question_text": "Что растет на деревьях",
+            "question_type": 2,
+            "choice_name": [
+                "Помидор: 7",
+                "Груша: 8",
+                "Топинамбур: 9",
+                "Арбуз: 10"
+            ]
+        },
+        {
+            "choice": 7
+        },
+        [],
+        {
+            "choice": 8
+        },
+        [],
+        {
+            "choice": 9
+        },
+        [],
+        {
+            "choice": 10
+        },
+        []
+    ]
+}
+
+
+GET /api/polls/poll_id%3D2
+HTTP 200 OK
+Allow: GET, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "poll": [
+        {
+            "question": 2,
+            "question_text": "Ваш любимый фрукт?",
+            "question_type": 0,
+            "choice_name": []
+        },
+        {
+            "question": 3,
+            "question_text": "Найдите красный фрукт",
+            "question_type": 1,
+            "choice_name": [
+                "Яблоко: 4",
+                "Слива: 5",
+                "Апельсин: 6"
+            ]
+        },
+        {
+            "question": 4,
+            "question_text": "Что растет на деревьях",
+            "question_type": 2,
+            "choice_name": [
+                "Помидор: 7",
+                "Груша: 8",
+                "Топинамбур: 9",
+                "Арбуз: 10"
+            ]
+```
