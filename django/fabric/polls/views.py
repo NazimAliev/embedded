@@ -1,3 +1,6 @@
+# Nazim ALiev
+# nazim.ru@gmail.com
+
 from django.shortcuts import render
 from django.db.models import Subquery
 
@@ -62,7 +65,7 @@ class AnswersView(APIView):
 # POST
 
 class AnswerTextView(APIView):
-	def get(self, request, usid):
+	def get(self, request, user_id):
 		answer = AnswerText.objects.filter(user_id=user_id)
 		serializer = AnswerTextSerializer(answer, many=True)
 		return Response({"answer" : serializer.data})

@@ -1,3 +1,6 @@
+# Nazim ALiev
+# nazim.ru@gmail.com
+
 from django.urls import path
 from . import views
 from .views import PollsView

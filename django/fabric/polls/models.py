@@ -1,3 +1,6 @@
+# Nazim ALiev
+# nazim.ru@gmail.com
+
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
