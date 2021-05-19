@@ -27,7 +27,6 @@ private:
 public:
 	// default constructor
 	Ident();
-	Ident(string ident);
 	~Ident();
 
 	void set(string ident);	// set ident
