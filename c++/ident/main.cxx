@@ -5,7 +5,8 @@ int main()
 {
 	{
 		Ident ident;
-		//Ident ident2;	// bad idea, mutex is busy
+		//Ident ident2;	// bad idea, mutex is busy and try.lock() behavior is undefined
+		//ToDo: test in other thread
 
 		ident.set("C2-A2-B7");
 		assert(ident.inc() == "C2-A2-B8");
