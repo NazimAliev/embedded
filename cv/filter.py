@@ -68,13 +68,13 @@ argmax2d = np.unravel_index(argmax, np.array(out_abs).shape)
 print(argmax2d)
 x,y = argmax2d
 # drawing
-plt.subplot(121)
+plt.subplot(212)
 scene_i = cv2.cvtColor(scene,cv2.COLOR_GRAY2RGB)
 cv2.rectangle(scene_i,(y, x), (y+iy,x+ix), (10,255,10), 2)
 plt.imshow(scene_i,cmap = 'gray')
 plt.title(u'Сигнал'), plt.xticks([]), plt.yticks([])
 
-plt.subplot(122)
+plt.subplot(211)
 out_log = np.log10(out_abs/out_m + 1.0)
 plt.imshow(out_log,cmap='gray')
 plt.title(u'Согласованный фильтр'), plt.xticks([]), plt.yticks([])
