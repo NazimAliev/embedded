@@ -11,4 +11,4 @@
 cmake_minimum_required(VERSION 3.2)
 
 # ok this file is completely useless, internal_utils.cmake will call cmake in dir tests/unitTests directly
-artemis_init_unit_tests()
+projectsxr_init_unit_tests()

@@ -12,7 +12,7 @@ cmake_minimum_required(VERSION 3.2)
 # Project Name
 project(send-x-receive)
 
-# define the default path of common in Artemis
+# define the default path of common in Projectsxr
 set(COMMON_DIR "../common" CACHE PATH "Common directory location")
 message(STATUS "COMMON_DIR_FOR_SXR: ${COMMON_DIR}")
 
@@ -34,7 +34,7 @@ include(${COMMON_DIR}/cmake/common.cmake)
 add_subdirectory(../as-commonlib ${CMAKE_CURRENT_BINARY_DIR}/as-commonlib)
 
 # Set component version
-artemis_set_component_version(
+projectsxr_set_component_version(
     "${SXR_VERSION_MAJOR}"
     "${SXR_VERSION_MINOR}"
     "${SXR_VERSION_PATCH}"
@@ -43,7 +43,7 @@ artemis_set_component_version(
 as_setup_coverage()
 
 # Create service and unit tests
-artemis_configure_component()
+projectsxr_configure_component()
 
 add_subdirectory(utils/console)
 #add_subdirectory(utils/rpc-bridge-fake)

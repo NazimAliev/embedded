@@ -14,7 +14,7 @@ project("send-x-receive-unittest")
 message(STATUS "%% : PROJECT_NAME ${PROJECT_NAME}")
 
 # must build with cmake flags==> -DBUILD_TESTS=ON which will set BUILD_UNIT_TESTS flag
-artemis_init_unit_tests()
+projectsxr_init_unit_tests()
 
 message(STATUS "%% : CMAKE_SOURCE_DIR ${CMAKE_SOURCE_DIR}")
 message(STATUS "%% : CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}")
@@ -70,7 +70,7 @@ target_sources(${PROJECT_NAME} PRIVATE
 
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/../../daimler-artemis-vcore/rpc-bridge/Src/RPC_NAD/generated_IPC
+    ${CMAKE_SOURCE_DIR}/../../projectsxr/rpc/Src/IPC
     ${COMMONAPI_INCLUDE_DIRS}
     ${GATEWAY_CLIENT_INCLUDE_DIRS}
     ${GATEWAY_VSOMEIPPROXY_INCLUDE_DIRS}
