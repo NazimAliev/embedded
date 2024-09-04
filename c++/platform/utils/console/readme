@@ -1,0 +1,21 @@
+1. SXR-447 SXR shall provide a console function via Engineering menu which allows to simulate an ECU data publish for a certain messageID in direction of DaiVB.
+
+Command example: sxr_ecu_publish [messageId] [data]
+
+Note: Depending on the channel part number of the messageId the function shall recognize, if the published data is an event or method.
+
+2. SXR-448 SXR shall provide a console function via Engineering menu which allows to listen for an ECU event or method call on a certain messageID. The command shall wait until an event or method call arrived. In case the message arrived its data shall be printed to console.
+
+Command example: sxr_ecu_listen [messageId]
+
+3. SXR-449 SXR shall provide a console function via Engineering menu which allows to simulate a DaiVB data publish on a certain messageID in direction of an ECU.
+
+Command example: sxr_daivb_publish [messageId] [data]
+
+Note: Depending on the channel part number of the messageId the function shall recognize, if the published data is an event or method.
+
+4. SXR shall provide a console function via Engineering menu which allows to listen for a DaiVB event or method call on a certain messageID. The command shall wait until the requested message arrived. In case the message arrived its data shall be printed to console.
+
+Command example: sxr_daivb_listen [messageId]
+
+qemu-arm -L $OECORE_TARGET_SYSROOT console 

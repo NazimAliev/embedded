@@ -1,0 +1,1 @@
+ sudo /usr/local/sdk-exp/sysroots/x86_64-valeosdk-linux/usr/bin/qemu-arm -L $OECORE_TARGET_SYSROOT ./create_queue
