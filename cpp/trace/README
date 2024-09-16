@@ -1,0 +1,108 @@
+OtlpTrace class gives tracing possibility. Every tracepoint is captured by collector like Tempo and will be shown in Grafana.
+
+Configuration
+=============
+
+Three options in the worker config json files are used:
+
+traceEndpoint
+-------------
+
+This string defines a collector endpoint address and has a prefix depended on a protocol, for example:
+
+traceEndpoint="http://collector_ip:4318/v1/traces"
+traceEndpoint="https://collector_ip:4318/v1/traces"
+traceEndpoint="grpc://collector_ip:4317"
+
+Default:
+http://localhost:4318/v1/traces
+
+traceLevel
+----------
+
+Numeric value:
+traceLevel=0: no traces;
+traceLevel=1: only info traces produced by SQ_TRACE(0);
+traceLevel=2: info traces and debug traces produced by SQ_TRACE_DEBUG("message")
+
+Default: 2
+
+traceFilter
+-----------
+
+The string chooses message only from one chunk producer, for example:
+ReadTable or readtable : only from ReadTable CP
+
+If traceFilter="all" the filter off
+
+Default: "all"
+
+Startup and shutdown
+====================
+
+OtlpTrace is a singleton and run instance in runtime startup, and terminates instance when runtime is going to the finish
+
+New trace with new Trace ID is created when new statement started. Macro SQ_TRACE(0)_NEW(statement_id) does it in sqream_runtime.cpp. This macro appears only ones. If you have nothing special, you don't need touch it, moreover, don't add another one or remove it.
+
+How to use
+==========
+Include OtlpTrace in your headers, the macros become available. Each macro includes function name and filename:linenumber in the trace point log.
+
+SQ_TRACE_SET_NAME("name") : setup new scope name. The scope is the "area" between two trace points. Each tracepoint contains start and timestamp corresponding the scope start and end. 
+
+This name will be included in trace logs in two places: at the beginning as Instrumental Scope name and in each tracepoint. The name is valid until next TRACE_IS_NAME("another name") appears in the code.
+
+It is useful to tag calls stack and distinguish one from another in trace log.
+
+TRACE : send tracepoint to collector
+
+    and
+
+SQ_TRACE_DEBUG("message") : send tracepoint to collector with arbitrary message.
+Note that SQ_TRACE_DEBUG("message") will be sent only on traceLevel=2.
+
+Every trace point, emerged by TRACE or TRACE_DEBUG, has unique ID and refers to the previous trace point as Parent ID. Every trace point contains Trace ID, which is gotten after TRACE_NEW for each trace points in the chain.
+
+SQ_TRACE_EVENT("message")
+Between tracepoint the events can be erased. Each event keep timestamp.
+
+Example
+=======
+
+void f2() {
+    ...
+    SQ_TRACE_SET_NAME("f2");
+    SQ_TRACE(0);
+    ...
+    SQ_TRACE_DEBUG("f2 ends");
+}
+
+void f1() {
+    ...
+    SQ_TRACE_SET_NAME("f1");
+    SQ_TRACE(0);
+    ...
+    SQ_TRACE_EVENT("Pass 1");
+    ...
+    SQ_TRACE_EVENT("Pass 2");
+    ...
+    f2();
+    SQ_TRACE_SET_NAME("f1");
+    ...
+    SQ_TRACE_DEBUG("f1 ends");
+    ... 
+}
+    
+
+Which information a tracepoint contains
+=======================================
+
+Tracepoint ID
+Parent tracepoint ID
+Trace ID
+Timestamps
+Function and source file info and custom messages
+
+That's all for now
+==================
+Feel free to reach Nazim Aliev nazima@sqreamtech.com
