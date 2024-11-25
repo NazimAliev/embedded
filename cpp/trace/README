@@ -44,6 +44,11 @@ OtlpTrace is a singleton and run instance in runtime startup, and terminates ins
 
 New trace with new Trace ID is created when new statement started. Macro SQ_TRACE(0)_NEW(statement_id) does it in sqream_runtime.cpp. This macro appears only ones. If you have nothing special, you don't need touch it, moreover, don't add another one or remove it.
 
+IOtlpTrace::get_instance(
+            get_session_flags()->otlp_trace_endpoint,
+            get_session_flags()->otlp_trace_level);
+        SQ_TRACE(0);
+
 How to use
 ==========
 Include OtlpTrace in your headers, the macros become available. Each macro includes function name and filename:linenumber in the trace point log.
